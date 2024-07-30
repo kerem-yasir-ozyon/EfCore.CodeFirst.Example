@@ -10,11 +10,13 @@ namespace EfCore.CodeFirst.Example.Context.Entities
 {
     public class Customer
     {
+        //[Key]
+        //public int CustomerNumber { get; set; }
         public int Id { get; set; }
 
         //[Column(TypeName = "nvarchar(25)")]
-        [Column(TypeName = "nvarchar")]
-        [MaxLength(25)]
+        //[Column(TypeName = "nvarchar")]
+        //[MaxLength(25)]
         public string Name { get; set; }
         public string SurName { get; set; }
         public string Address { get; set; }

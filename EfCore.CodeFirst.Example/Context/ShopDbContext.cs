@@ -16,5 +16,18 @@ namespace EfCore.CodeFirst.Example.Context
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer("Data Source=ErdemDesktop;Initial Catalog=ShopDb;Integrated Security=true;Encrypt=False");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            //modelBuilder.Entity<Customer>().HasKey(c => c.CustomerNumber);
+            //modelBuilder.Entity<Customer>().Property(c => c.CustomerNumber).UseIdentityColumn(5,10);
+            //modelBuilder.Entity<Customer>().Property(c =>c.SurName).HasMaxLength(10).IsUnicode(false); // char(5)
+            //modelBuilder.Entity<Customer>().Property(c => c.Address).IsFixedLength().HasMaxLength(50).IsUnicode(true); // nchar(5)
+            //modelBuilder.Entity<Customer>().Property(c => c.Email).IsRequired(); // girilmesi zorunlu
+
+            
+        }
     }
 }
