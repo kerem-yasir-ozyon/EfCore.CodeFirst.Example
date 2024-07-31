@@ -12,5 +12,9 @@ namespace EfCore.CodeFirst.Example.Context.Entities
         public string Name { get; set; }
         public string SurName { get; set; }
         public string Title { get; set; }
+
+        //nav prop
+
+        public EmployeeInfo EmployeeInfo { get; set; }
     }
 }

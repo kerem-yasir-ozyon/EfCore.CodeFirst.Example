@@ -10,7 +10,11 @@ namespace EfCore.CodeFirst.Example.Context
 {
     public class ShopDbContext : DbContext
     {
-        public DbSet<Customer> Customers { get; set; }
+        //public DbSet<Customer> Customers { get; set; }
+
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<EmployeeInfo> EmployeesInfo { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -26,6 +30,11 @@ namespace EfCore.CodeFirst.Example.Context
             //modelBuilder.Entity<Customer>().Property(c =>c.SurName).HasMaxLength(10).IsUnicode(false); // char(5)
             //modelBuilder.Entity<Customer>().Property(c => c.Address).IsFixedLength().HasMaxLength(50).IsUnicode(true); // nchar(5)
             //modelBuilder.Entity<Customer>().Property(c => c.Email).IsRequired(); // girilmesi zorunlu
+
+            modelBuilder.Entity<Employee>()
+                        .HasOne(e => e.EmployeeInfo)
+                        .WithOne(ei => ei.Employee)
+                        .HasForeignKey<EmployeeInfo>(ei => ei.Id);
 
             
         }
